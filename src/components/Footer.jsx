@@ -35,7 +35,7 @@ function Footer() {
               Quick Links
             </Typography>
             <Link href="#" color="inherit" display="block" sx={{ mb: 0.5, textDecoration: 'none' }}>Home</Link>
-            <Link href="#" color="inherit" display="block" sx={{ mb: 0.5, textDecoration: 'none' }}>AI ChatBot</Link>
+            <Link href="#" color="inherit" display="block" sx={{ mb: 0.5, textDecoration: 'none' }}>Assistant</Link>
             <Link href="#" color="inherit" display="block" sx={{ mb: 0.5, textDecoration: 'none' }}>Book Sessions</Link>
             <Link href="#" color="inherit" display="block" sx={{ mb: 0.5, textDecoration: 'none' }}>Discussion Forum</Link>
           </Grid>

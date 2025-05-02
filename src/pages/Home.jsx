@@ -14,6 +14,7 @@ import {
 import SmartToyIcon from '@mui/icons-material/SmartToy'; // Added icon for AI chat
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth'; // Added icon for booking sessions
 import PlaceholderImage from '../components/PlaceholderImage';
+import '../styles/Home.css'; // Import the CSS file
 
 function Home() {
   return (
@@ -150,29 +151,15 @@ function Home() {
           <Grid item xs={12} sm={6} lg={3} sx={{ display: 'flex' }}>
             <Card 
               elevation={0}
-              sx={{ 
-                height: '100%',
-                width: '100%', 
-                display: 'flex', 
-                flexDirection: 'column',
-                borderRadius: 2,
-                border: '1px solid #eaeaea',
-                overflow: 'hidden',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
-                },
-                minHeight: 380
-              }}
+              className="service-card"
             >
               <CardMedia
                 component="img"
-                height="180"
                 image="src\assets\images\AI_ChatBot.jpg"
                 alt="AI ChatBot"
+                className="service-card-media"
               />
-              <CardContent sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <CardContent className="service-card-content">
                 <div>
                   <Typography variant="h5" component="h3" gutterBottom fontWeight="bold">
                   AI ChatBot
@@ -196,29 +183,15 @@ function Home() {
           <Grid item xs={12} sm={6} lg={3} sx={{ display: 'flex' }}>
             <Card 
               elevation={0}
-              sx={{ 
-                height: '100%',
-                width: '100%', 
-                display: 'flex', 
-                flexDirection: 'column',
-                borderRadius: 2,
-                border: '1px solid #eaeaea',
-                overflow: 'hidden',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
-                },
-                minHeight: 380
-              }}
+              className="service-card"
             >
               <CardMedia
                 component="img"
-                height="180"
                 image="src\assets\images\Wellness_Insights.jpg"
                 alt="Wellness Insights"
+                className="service-card-media"
               />
-              <CardContent sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <CardContent className="service-card-content">
                 <div>
                   <Typography variant="h5" component="h3" gutterBottom fontWeight="bold">
                     Wellness Insights
@@ -242,29 +215,15 @@ function Home() {
           <Grid item xs={12} sm={6} lg={3} sx={{ display: 'flex' }}>
             <Card 
               elevation={0}
-              sx={{ 
-                height: '100%',
-                width: '100%', 
-                display: 'flex', 
-                flexDirection: 'column',
-                borderRadius: 2,
-                border: '1px solid #eaeaea',
-                overflow: 'hidden',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
-                },
-                minHeight: 380
-              }}
+              className="service-card"
             >
               <CardMedia
                 component="img"
-                height="180"
                 image="src\assets\images\counselling_image.jpg"
                 alt="Expert Sessions"
+                className="service-card-media"
               />
-              <CardContent sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <CardContent className="service-card-content">
                 <div>
                   <Typography variant="h5" component="h3" gutterBottom fontWeight="bold">
                     Expert Sessions
@@ -288,29 +247,15 @@ function Home() {
           <Grid item xs={12} sm={6} lg={3} sx={{ display: 'flex' }}>
             <Card 
               elevation={0}
-              sx={{ 
-                height: '100%',
-                width: '100%', 
-                display: 'flex', 
-                flexDirection: 'column',
-                borderRadius: 2,
-                border: '1px solid #eaeaea',
-                overflow: 'hidden',
-                transition: 'all 0.3s ease',
-                '&:hover': {
-                  transform: 'translateY(-8px)',
-                  boxShadow: '0 10px 20px rgba(0,0,0,0.1)'
-                },
-                minHeight: 380
-              }}
+              className="service-card"
             >
               <CardMedia
                 component="img"
-                height="180"
                 image="src\assets\images\Community_Forum.jpg"
                 alt="Community Forum"
+                className="service-card-media"
               />
-              <CardContent sx={{ p: 3, flexGrow: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
+              <CardContent className="service-card-content">
                 <div>
                   <Typography variant="h5" component="h3" gutterBottom fontWeight="bold">
                     Community Forum

@@ -96,6 +96,80 @@ const psychologists = [
   },
 ];
 
+// Sample data for psychiatrists with image URLs
+const psychiatrists = [
+  {
+    id: 1,
+    name: 'Dr. Mahmud Khan',
+    title: 'Clinical Psychiatrist',
+    specialty: 'Mood Disorders',
+    university: 'Bangabandhu Medical University',
+    rating: 4.9,
+    reviewCount: 145,
+    nextAvailable: 'Today',
+    availableTimes: ['9:00 AM', '1:30 PM', '5:00 PM'],
+    price: '৳1,800',
+    initials: 'MK',
+    imageUrl: 'https://placehold.co/200x200/6C3483/FFFFFF/png?text=Dr.+MK',
+  },
+  {
+    id: 2,
+    name: 'Dr. Fatima Akhtar',
+    title: 'Neuropsychiatrist',
+    specialty: 'Anxiety & OCD',
+    university: 'Dhaka Medical College',
+    rating: 4.8,
+    reviewCount: 132,
+    nextAvailable: 'Tomorrow',
+    availableTimes: ['10:30 AM', '2:00 PM'],
+    price: '৳1,900',
+    initials: 'FA',
+    imageUrl: 'https://placehold.co/200x200/6C3483/FFFFFF/png?text=Dr.+FA',
+  },
+  {
+    id: 3,
+    name: 'Prof. Zahir Uddin',
+    title: 'Senior Psychiatrist',
+    specialty: 'Depression & Bipolar',
+    university: 'BSMMU',
+    rating: 5.0,
+    reviewCount: 210,
+    nextAvailable: 'Apr 30',
+    availableTimes: ['11:00 AM', '3:00 PM', '6:30 PM'],
+    price: '৳2,200',
+    initials: 'ZU',
+    imageUrl: 'https://placehold.co/200x200/6C3483/FFFFFF/png?text=Prof.+ZU',
+  },
+  {
+    id: 4,
+    name: 'Dr. Sadia Rahman',
+    title: 'Child Psychiatrist',
+    specialty: 'ADHD & Autism',
+    university: 'Chittagong Medical College',
+    rating: 4.7,
+    reviewCount: 98,
+    nextAvailable: 'May 1',
+    availableTimes: ['9:30 AM', '4:00 PM'],
+    price: '৳1,700',
+    initials: 'SR',
+    imageUrl: 'https://placehold.co/200x200/6C3483/FFFFFF/png?text=Dr.+SR',
+  },
+  {
+    id: 5,
+    name: 'Dr. Mohammed Ali',
+    title: 'Geriatric Psychiatrist',
+    specialty: 'Dementia & Memory',
+    university: 'Sylhet Medical College',
+    rating: 4.8,
+    reviewCount: 86,
+    nextAvailable: 'May 3',
+    availableTimes: ['10:00 AM', '1:00 PM', '4:30 PM'],
+    price: '৳2,000',
+    initials: 'MA',
+    imageUrl: 'https://placehold.co/200x200/6C3483/FFFFFF/png?text=Dr.+MA',
+  },
+];
+
 // Updated sample data for mentors with image URLs
 const mentors = [
   {
@@ -180,7 +254,7 @@ function Sessions() {
   return (
     <Box sx={{ py: 1 }}>
       <Container maxWidth="xl"> 
-        {/* Tabs for switching between psychologists and mentors */}
+        {/* Tabs for switching between psychologists, psychiatrists and mentors */}
         <Paper elevation={0} sx={{ mb: 4, borderRadius: 2 }}>
           <Tabs 
             value={tabValue} 
@@ -206,12 +280,27 @@ function Sessions() {
               }} 
             />
             <Tab 
-              label="Mentors" 
+              label="Psychiatrists" 
               sx={{ 
                 background: tabValue === 1 ? 
-                  'linear-gradient(to right, rgba(130, 182, 71, 0.1), rgba(130, 182, 71, 0.05))' : 
+                  'linear-gradient(to right, rgba(36, 81, 104, 0.1), rgba(36, 81, 104, 0.05))' :  
                   'transparent',
                 fontWeight: tabValue === 1 ? 800 : 600,
+                fontSize: '1.1rem',
+                transition: 'background 0.3s ease, transform 0.2s ease',
+                padding: '12px 16px',
+                '&:hover': {
+                  transform: 'translateY(-1px)'
+                }
+              }} 
+            />
+            <Tab 
+              label="Mentors" 
+              sx={{ 
+                background: tabValue === 2 ? 
+                  'linear-gradient(to right, rgba(36, 81, 104, 0.1), rgba(36, 81, 104, 0.05))' :  
+                  'transparent',
+                fontWeight: tabValue === 2 ? 800 : 600,
                 fontSize: '1.1rem',
                 transition: 'background 0.3s ease, transform 0.2s ease',
                 padding: '12px 16px',
@@ -310,8 +399,95 @@ function Sessions() {
           </Grid>
         </Box>
 
-        {/* Mentors list - Fixed to show when tabValue is 1 */}
+        {/* Psychiatrists list */}
         <Box role="tabpanel" hidden={tabValue !== 1}>
+          <Grid container spacing={3}>
+            {psychiatrists.map((psychiatrist) => (
+              <Grid item xs={12} md={6} lg={3} key={psychiatrist.id}>
+                <Card 
+                  elevation={0} 
+                  sx={{ 
+                    height: '100%', 
+                    display: 'flex', 
+                    flexDirection: 'column',
+                    border: '1px solid #e0e0e0',
+                    transition: 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out',
+                    '&:hover': {
+                      transform: 'translateY(-4px)',
+                      boxShadow: '0px 8px 16px rgba(0,0,0,0.1)'
+                    }
+                  }}
+                >
+                  <Box sx={{ p: 3, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+                    <CardMedia
+                      component="img"
+                      image={psychiatrist.imageUrl}
+                      alt={psychiatrist.name}
+                      sx={{ 
+                        width: '100px', 
+                        height: '100px', 
+                        borderRadius: '50%',
+                        mb: 2,
+                        border: '3px solid #245168'
+                      }}
+                    />
+                    <Typography variant="h6" align="center" sx={{ fontWeight: 600 }}>
+                      {psychiatrist.name}
+                    </Typography>
+                    <Typography variant="body2" color="text.secondary" align="center" gutterBottom>
+                      {psychiatrist.title}
+                    </Typography>
+                    <Chip 
+                      label={psychiatrist.specialty} 
+                      color="primary"
+                      size="small" 
+                      sx={{ mb: 2 }} 
+                    />
+                    <Stack direction="row" alignItems="center" spacing={1}>
+                      <Rating value={psychiatrist.rating} precision={0.1} size="small" readOnly />
+                      <Typography variant="body2" color="text.secondary">
+                        ({psychiatrist.reviewCount})
+                      </Typography>
+                    </Stack>
+                  </Box>
+                  
+                  <Divider />
+                  
+                  <CardContent sx={{ flexGrow: 1, pt: 2 }}>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                      <SchoolIcon fontSize="small" sx={{ color: 'primary.main', mr: 1 }} />
+                      <Typography variant="body2">{psychiatrist.university}</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
+                      <CalendarMonthIcon fontSize="small" sx={{ color: 'primary.main', mr: 1 }} />
+                      <Typography variant="body2">Next Available: {psychiatrist.nextAvailable}</Typography>
+                    </Box>
+                    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+                      <AccessTimeIcon fontSize="small" sx={{ color: 'primary.main', mr: 1 }} />
+                      <Typography variant="body2" noWrap>
+                        {psychiatrist.availableTimes.join(', ')}
+                      </Typography>
+                    </Box>
+                  </CardContent>
+                  
+                  <Divider />
+                  
+                  <CardActions sx={{ justifyContent: 'space-between', px: 2, py: 1.5 }}>
+                    <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
+                      {psychiatrist.price} <Typography component="span" variant="caption">/ session</Typography>
+                    </Typography>
+                    <Button variant="contained" color="secondary">
+                      Book Now
+                    </Button>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Box>
+
+        {/* Mentors list - Fixed to show when tabValue is 2 now */}
+        <Box role="tabpanel" hidden={tabValue !== 2}>
           <Grid container spacing={3}>
             {mentors.map((mentor) => (
               <Grid item xs={12} md={6} lg={3} key={mentor.id}>
@@ -339,7 +515,7 @@ function Sessions() {
                         height: '100px', 
                         borderRadius: '50%',
                         mb: 2,
-                        border: '3px solid #82b647'  // Changed border color to match the green theme
+                        border: '3px solid #245168'
                       }}
                     />
                     <Typography variant="h6" align="center" sx={{ fontWeight: 600 }}>
@@ -350,7 +526,7 @@ function Sessions() {
                     </Typography>
                     <Chip 
                       label={mentor.specialty} 
-                      color="success" // Changed to success for green color
+                      color="primary"
                       size="small" 
                       sx={{ mb: 2 }} 
                     />
@@ -366,15 +542,15 @@ function Sessions() {
                   
                   <CardContent sx={{ flexGrow: 1, pt: 2 }}>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                      <SchoolIcon fontSize="small" sx={{ color: 'success.main', mr: 1 }} />
+                      <SchoolIcon fontSize="small" sx={{ color: 'primary.main', mr: 1 }} />
                       <Typography variant="body2">{mentor.university}</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center', mb: 1 }}>
-                      <CalendarMonthIcon fontSize="small" sx={{ color: 'success.main', mr: 1 }} />
+                      <CalendarMonthIcon fontSize="small" sx={{ color: 'primary.main', mr: 1 }} />
                       <Typography variant="body2">Next Available: {mentor.nextAvailable}</Typography>
                     </Box>
                     <Box sx={{ display: 'flex', alignItems: 'center' }}>
-                      <AccessTimeIcon fontSize="small" sx={{ color: 'success.main', mr: 1 }} />
+                      <AccessTimeIcon fontSize="small" sx={{ color: 'primary.main', mr: 1 }} />
                       <Typography variant="body2" noWrap>
                         {mentor.availableTimes.join(', ')}
                       </Typography>
@@ -387,15 +563,7 @@ function Sessions() {
                     <Typography variant="subtitle1" sx={{ fontWeight: 600 }}>
                       {mentor.price} <Typography component="span" variant="caption">/ session</Typography>
                     </Typography>
-                    <Button 
-                      variant="contained" 
-                      sx={{ 
-                        bgcolor: '#82b647',
-                        '&:hover': {
-                          bgcolor: '#6a9339',
-                        }
-                      }}
-                    >
+                    <Button variant="contained" color="secondary">
                       Book Now
                     </Button>
                   </CardActions>

@@ -13,28 +13,43 @@ import {
   ListItemText,
   Container,
   useMediaQuery,
-  useTheme
+  useTheme,
+  Badge,
+  Popover
 } from '@mui/material';
 import MenuIcon from '@mui/icons-material/Menu';
 import PersonIcon from '@mui/icons-material/Person';
+import NotificationsIcon from '@mui/icons-material/Notifications';
+import Notification from './Notification';
 
 const navItems = [
   { name: 'Home', path: '/' },
-  { name: 'AI ChatBot', path: '/chatbot' },
+  { name: 'Assistant', path: '/chatbot' },
   { name: 'Sessions', path: '/sessions' },
   { name: 'Forum', path: '/forum' },
   { name: 'Dashboard', path: '/dashboard' },
-  { name: 'About', path: '#' },
+  { name: 'About', path: '/about' },
 ];
 
 function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [notificationAnchor, setNotificationAnchor] = useState(null);
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
+
+  const handleNotificationOpen = (event) => {
+    setNotificationAnchor(event.currentTarget);
+  };
+
+  const handleNotificationClose = () => {
+    setNotificationAnchor(null);
+  };
+
+  const notificationOpen = Boolean(notificationAnchor);
 
   return (
     <AppBar position="static" sx={{ backgroundColor: 'white', boxShadow: 'none', borderBottom: '1px solid #e0e0e0' }}>
@@ -70,7 +85,7 @@ function Header() {
 
           {/* Desktop Navigation */}
           {!isMobile && (
-            <Box sx={{ display: 'flex' }}>
+            <Box sx={{ display: 'flex', alignItems: 'center' }}>
               {navItems.map((item) => (
                 <Button 
                   key={item.name}
@@ -87,21 +102,46 @@ function Header() {
                   {item.name}
                 </Button>
               ))}
-              <Button 
+              
+              {/* Notification Button */}
+              <IconButton 
+                color="primary"
+                aria-label="notifications"
+                onClick={handleNotificationOpen}
+                sx={{ mx: 1 }}
+              >
+                <Badge badgeContent={3} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+
+              {/* <Button 
                 variant="contained" 
                 color="secondary" 
                 startIcon={<PersonIcon />}
                 sx={{ ml: 2 }}
               >
                 Login
-              </Button>
+              </Button> */}
             </Box>
           )}
 
           {/* Mobile Navigation Toggle */}
           {isMobile && (
             <>
-              <Button 
+              {/* Notification Button for mobile */}
+              <IconButton 
+                color="primary"
+                aria-label="notifications"
+                onClick={handleNotificationOpen}
+                sx={{ mr: 1 }}
+              >
+                <Badge badgeContent={3} color="error">
+                  <NotificationsIcon />
+                </Badge>
+              </IconButton>
+              
+              {/* <Button 
                 variant="contained" 
                 color="secondary" 
                 startIcon={<PersonIcon />}
@@ -109,7 +149,7 @@ function Header() {
                 sx={{ mr: 1 }}
               >
                 Login
-              </Button>
+              </Button> */}
               <IconButton
                 color="primary"
                 aria-label="open menu"
@@ -120,6 +160,23 @@ function Header() {
               </IconButton>
             </>
           )}
+
+          {/* Notification Popup */}
+          <Popover
+            open={notificationOpen}
+            anchorEl={notificationAnchor}
+            onClose={handleNotificationClose}
+            anchorOrigin={{
+              vertical: 'bottom',
+              horizontal: 'right',
+            }}
+            transformOrigin={{
+              vertical: 'top',
+              horizontal: 'right',
+            }}
+          >
+            <Notification onClose={handleNotificationClose} />
+          </Popover>
 
           {/* Mobile Navigation Drawer */}
           <Drawer

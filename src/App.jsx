@@ -7,6 +7,7 @@ import ChatBot from './pages/ChatBot';
 import Sessions from './pages/Sessions';
 import Forum from './pages/Forum';
 import Dashboard from './pages/Dashboard';
+import About from './pages/About';
 import theme from './theme';
 import './App.css';
 
@@ -42,6 +43,7 @@ function App() {
           <Route path="/sessions" element={<Layout><Sessions /></Layout>} />
           <Route path="/forum" element={<Layout><Forum /></Layout>} />
           <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+          <Route path="/about" element={<Layout><About /></Layout>} />
           {/* Add more routes as needed */}
         </Routes>
       </Router>
