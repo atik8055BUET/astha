@@ -36,7 +36,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <Router basename="/astha">
+      <Router>
         <Routes>
           <Route path="/" element={<Layout><Home /></Layout>} />
           <Route path="/chatbot" element={<Layout><ChatBot /></Layout>} />
